@@ -38,7 +38,6 @@ const SLIDE_INTERVAL = 5000; // ms
 
 export const Hero: React.FC = () => {
   const [current, setCurrent] = useState(0);
-  const [prev, setPrev] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [checkInDate, setCheckInDate] = useState<string>('');
   const [checkOutDate, setCheckOutDate] = useState<string>('');
@@ -54,10 +53,8 @@ export const Hero: React.FC = () => {
   const goTo = useCallback((idx: number) => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setPrev(current);
     setCurrent(idx);
     setTimeout(() => {
-      setPrev(null);
       setIsAnimating(false);
     }, 900);
   }, [current, isAnimating]);

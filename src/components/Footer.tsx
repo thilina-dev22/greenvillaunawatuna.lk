@@ -1,5 +1,5 @@
 import { HOTEL_INFO } from '../data/hotelData';
-import { Phone, MapPin, ExternalLink, Calendar, Star, MessageCircle, Heart, Mail } from 'lucide-react';
+import { Phone, MapPin, ExternalLink, Calendar, Star, MessageCircle, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
