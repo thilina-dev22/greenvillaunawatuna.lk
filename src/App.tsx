@@ -8,23 +8,26 @@ import { LocationSection } from './components/LocationSection';
 import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { CurrencyProvider } from './context/CurrencyContext';
 
 export function App() {
   return (
-    <div className="min-h-screen bg-[#FBFBFA] flex flex-col font-sans selection:bg-[#0F382C] selection:text-white">
-      <Header />
-      <main className="flex-grow">
-        <Hero />
-        <AboutSection />
-        <RoomsSection />
-        <FacilitiesSection />
-        <ReviewsSection />
-        <LocationSection />
-        <FaqSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <CurrencyProvider>
+      <div className="min-h-screen bg-[#FBFBFA] flex flex-col font-sans selection:bg-[#0F382C] selection:text-white">
+        <Header />
+        <main className="flex-grow">
+          <Hero />
+          <AboutSection />
+          <RoomsSection />
+          <FacilitiesSection />
+          <ReviewsSection />
+          <LocationSection />
+          <FaqSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
+    </CurrencyProvider>
   );
 }
 

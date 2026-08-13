@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Room } from '../data/hotelData';
 import { HOTEL_INFO } from '../data/hotelData';
 import { X, Check, Calendar, ChevronLeft, ChevronRight, Maximize2, Sparkles, BedDouble, Users, Eye } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface RoomModalProps {
   room: Room | null;
@@ -10,6 +11,7 @@ interface RoomModalProps {
 
 export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const { formatAmount } = useCurrency();
 
   if (!room) return null;
 
@@ -189,10 +191,10 @@ export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
             <div className="text-xs text-slate-500">Starting price from</div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-serif font-bold text-slate-900">
-                LKR {room.priceLKR.toLocaleString()}
+                {formatAmount(room.priceUSD)}
               </span>
               <span className="text-sm text-slate-500 font-medium">
-                (~${room.priceUSD} USD) / night
+                / night
               </span>
             </div>
           </div>

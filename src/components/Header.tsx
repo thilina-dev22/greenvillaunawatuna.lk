@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { HOTEL_INFO } from '../data/hotelData';
 import { Calendar, Menu, X, Phone } from 'lucide-react';
+import { CurrencySelector } from './CurrencySelector';
 
 const NAV_LINKS = [
   { href: '#about', label: 'Overview' },
@@ -75,7 +76,7 @@ export const Header: React.FC = () => {
           </nav>
 
           {/* Header Actions */}
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href={`tel:${HOTEL_INFO.phone}`}
               className="flex items-center gap-1.5 text-xs text-emerald-200/80 hover:text-white font-medium px-3 py-2 rounded-lg hover:bg-white/8 transition-colors"
@@ -83,6 +84,8 @@ export const Header: React.FC = () => {
               <Phone className="w-3.5 h-3.5 text-amber-300" />
               <span>{HOTEL_INFO.phoneFormatted}</span>
             </a>
+
+            <CurrencySelector />
 
             <a
               href={HOTEL_INFO.directBookingUrl}
@@ -95,13 +98,14 @@ export const Header: React.FC = () => {
             </a>
           </div>
 
-          {/* Mobile: Book button + Hamburger */}
+          {/* Mobile: CurrencySelector + Book button + Hamburger */}
           <div className="lg:hidden flex items-center gap-2">
+            <CurrencySelector />
             <a
               href={HOTEL_INFO.directBookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-full text-xs shadow-md transition-colors"
+              className="flex items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-3.5 py-1.5 rounded-full text-xs shadow-md transition-colors"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Book</span>

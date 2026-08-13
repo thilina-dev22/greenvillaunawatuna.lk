@@ -3,6 +3,7 @@ import type { Room } from '../data/hotelData';
 import { ROOMS, HOTEL_INFO } from '../data/hotelData';
 import { RoomModal } from './RoomModal';
 import { Maximize2, BedDouble, Users, Sparkles, ChevronRight, ChevronLeft, Calendar, Eye, Check } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 export const RoomsSection: React.FC = () => {
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
@@ -72,6 +73,7 @@ interface RoomCardProps {
 
 const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const { formatAmount } = useCurrency();
 
   const isPenthouse = room.id === 'penthouse-suite';
 
@@ -190,11 +192,11 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
           <div>
             <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold block">Price Per Night</span>
             <div className="flex items-baseline gap-1.5">
-              <span className="text-xl font-serif font-bold text-slate-900">
-                LKR {room.priceLKR.toLocaleString()}
+              <span className="text-2xl font-serif font-bold text-slate-900">
+                {formatAmount(room.priceUSD)}
               </span>
               <span className="text-xs text-slate-500 font-medium">
-                (~${room.priceUSD})
+                / night
               </span>
             </div>
           </div>

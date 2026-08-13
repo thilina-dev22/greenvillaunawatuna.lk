@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { HOTEL_INFO } from '../data/hotelData';
 import { Calendar as CalendarIcon, Users, Star, MapPin, CheckCircle, ShieldCheck, ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 // Best photos: exterior, garden, penthouse terrace, rooms, courtyard — largest/highest quality
 const HERO_SLIDES = [
@@ -44,6 +45,8 @@ export const Hero: React.FC = () => {
   const [guests, setGuests] = useState<string>('2');
   const [isVisible, setIsVisible] = useState(false);
   const [paused, setPaused] = useState(false);
+
+  const { formatAmount } = useCurrency();
 
   useEffect(() => {
     const t = setTimeout(() => setIsVisible(true), 100);
@@ -308,7 +311,7 @@ export const Hero: React.FC = () => {
                   <div>
                     <p className="text-[11px] text-emerald-700 font-semibold uppercase tracking-wide">Starting from</p>
                     <p className="text-lg font-serif font-bold text-emerald-900">
-                      LKR 11,907 <span className="text-sm font-normal text-emerald-600">/ night</span>
+                      {formatAmount(55)} <span className="text-sm font-normal text-emerald-600">/ night</span>
                     </p>
                   </div>
                   <span className="text-[11px] font-bold bg-emerald-200/60 text-emerald-900 px-2.5 py-1 rounded-lg">No Fees</span>
