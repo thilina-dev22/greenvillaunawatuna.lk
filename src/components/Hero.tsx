@@ -116,14 +116,14 @@ export const Hero: React.FC = () => {
       {/* ── Slide Nav Arrows ── */}
       <button
         onClick={() => { prev_slide(); setPaused(true); }}
-        className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/30 hover:bg-black/55 backdrop-blur-sm border border-white/15 text-white flex items-center justify-center transition-all hover:scale-110"
+        className="hidden sm:flex absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/30 hover:bg-black/55 backdrop-blur-sm border border-white/15 text-white items-center justify-center transition-all hover:scale-110"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
       <button
         onClick={() => { next(); setPaused(true); }}
-        className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/30 hover:bg-black/55 backdrop-blur-sm border border-white/15 text-white flex items-center justify-center transition-all hover:scale-110"
+        className="hidden sm:flex absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/30 hover:bg-black/55 backdrop-blur-sm border border-white/15 text-white items-center justify-center transition-all hover:scale-110"
         aria-label="Next slide"
       >
         <ChevronRight className="w-5 h-5" />
