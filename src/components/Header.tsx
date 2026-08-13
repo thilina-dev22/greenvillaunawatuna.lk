@@ -99,20 +99,20 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Mobile: CurrencySelector + Book button + Hamburger */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-1.5 sm:gap-2">
             <CurrencySelector />
             <a
               href={HOTEL_INFO.directBookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-3.5 py-1.5 rounded-full text-xs shadow-md transition-colors"
+              className="flex items-center gap-1 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs shadow-md transition-colors shrink-0"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Book</span>
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-emerald-100 hover:text-white hover:bg-white/10 rounded-xl transition-colors outline-none"
+              className="p-1.5 text-emerald-100 hover:text-white hover:bg-white/10 rounded-xl transition-colors outline-none shrink-0"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
             >
