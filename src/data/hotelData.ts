@@ -73,6 +73,73 @@ export const HOTEL_INFO = {
 
 export const ROOMS: Room[] = [
   {
+    id: "three-bedroom-apartment",
+    name: "Three-Bedroom Apartment",
+    unitsCount: 1,
+    size: "120 m²",
+    occupancy: "6 Adults",
+    bed: "3 Large Double Beds + 1 Sofa Bed",
+    view: "Garden View & Private Terrace",
+    priceLKR: 36000,
+    priceUSD: 120,
+    breakfastPriceLKR: 2005,
+    shortDescription: "Spacious 120 m² multi-bedroom residence featuring 3 private bedrooms, 3 en-suite bathrooms, full private kitchen, washing machine, and terrace.",
+    fullDescription: "Boasting 3 bedrooms and 3 bathrooms, this spacious 120 m² apartment features a separate living room, fully equipped private kitchen, and private terrace overlooking tropical greenery. Perfect for families or group stays, the apartment comes with air conditioning, a washing machine, flat-screen TV, and 4 beds (3 large double beds + 1 sofa bed).",
+    features: [
+      "120 m² Entire Private Apartment",
+      "3 Private Bedrooms & 3 En-suite Bathrooms",
+      "Fully Equipped Private Kitchen",
+      "Washing Machine & Laundry Amenities",
+      "Private Furnished Terrace & Garden View",
+      "Air Conditioning & Ceiling Fans",
+      "Flat-screen TV with Satellite Channels",
+      "Free High-Speed WiFi"
+    ],
+    bathroomAmenities: [
+      "3 Private En-suite Bathrooms",
+      "Hot & Cold Walk-in Showers",
+      "Free Luxury Toiletries",
+      "Hairdryers",
+      "Fresh Towels",
+      "Toilet Paper & Bidet"
+    ],
+    roomAmenities: [
+      "Air conditioning",
+      "Fully equipped kitchen",
+      "Washing machine",
+      "Kitchenette & cooking utensils",
+      "Private terrace & outdoor seating",
+      "Flat-screen TV",
+      "Satellite channels",
+      "Sofa bed & seating area",
+      "Laptop safe & clothes rack",
+      "Private entrance"
+    ],
+    images: [
+      "/images/apartment/apt-1.jpg",
+      "/images/apartment/apt-2.jpg",
+      "/images/apartment/apt-3.jpg",
+      "/images/apartment/apt-4.jpg",
+      "/images/apartment/apt-5.jpg",
+      "/images/apartment/apt-6.jpg",
+      "/images/apartment/apt-7.jpg",
+      "/images/apartment/apt-8.jpg",
+      "/images/apartment/apt-9.jpg",
+      "/images/apartment/apt-10.jpg",
+      "/images/apartment/apt-11.jpg",
+      "/images/apartment/apt-12.jpg",
+      "/images/apartment/apt-13.jpg",
+      "/images/apartment/apt-14.jpg",
+      "/images/apartment/apt-15.jpg",
+      "/images/apartment/apt-16.jpg",
+      "/images/apartment/apt-17.jpg",
+      "/images/apartment/apt-18.jpg",
+      "/images/apartment/apt-19.jpg",
+      "/images/apartment/apt-20.jpg"
+    ],
+    bookingUrl: "https://www.hotelmate.net/hotels/green-villa-unawatuna-galle"
+  },
+  {
     id: "penthouse-suite",
     name: "Penthouse Suite",
     unitsCount: 1,
@@ -80,8 +147,8 @@ export const ROOMS: Room[] = [
     occupancy: "2 Adults",
     bed: "1 Extra-Large Double Bed",
     view: "Panoramic Jungle & Canopy View",
-    priceLKR: 45000,
-    priceUSD: 150,
+    priceLKR: 24000,
+    priceUSD: 80,
     breakfastPriceLKR: 2005,
     shortDescription: "Exclusive top-floor luxury penthouse boasting a massive private terrace with a personal spa bath / jacuzzi and panoramic views.",
     fullDescription: "The Penthouse Suite is Green Villa's flagship residence. Spanning a generous 111 square meters, it features a grand private outdoor terrace equipped with a high-end spa bath/jacuzzi, sunbeds, and outdoor dining set under canopy roofs. Inside, enjoy a lavish living room, separate air-conditioned bedroom, multiple pristine bathrooms, minibar, and premium luxury finishes.",
@@ -137,8 +204,8 @@ export const ROOMS: Room[] = [
     occupancy: "2 Adults",
     bed: "1 Extra-Large Double Bed",
     view: "Tropical Garden View",
-    priceLKR: 16500,
-    priceUSD: 55,
+    priceLKR: 16200,
+    priceUSD: 54,
     breakfastPriceLKR: 2005,
     shortDescription: "Air-conditioned retreat featuring a private furnished balcony overlooking the lush tropical garden.",
     fullDescription: "Offering free toiletries and elegant wooden furnishings, this 28 m² Deluxe Double Room includes a private balcony where guests can unwind surrounded by tropical greenery. Complete with an extra-large double bed, private en-suite bathroom, minibar, tea/coffee maker, and flat-screen TV with satellite channels.",
@@ -194,8 +261,8 @@ export const ROOMS: Room[] = [
     occupancy: "2 Adults",
     bed: "1 Extra-Large Double Bed",
     view: "Garden View",
-    priceLKR: 24000,
-    priceUSD: 80,
+    priceLKR: 13200,
+    priceUSD: 44,
     breakfastPriceLKR: 2005,
     shortDescription: "Peaceful ground-level room with garden views, air conditioning, plush double bed, and modern amenities.",
     fullDescription: "Designed for peaceful rest and relaxation, the Deluxe Double Room provides 28 m² of tastefully decorated space on the ground floor. Enjoy direct access to tranquil garden vistas, a ultra-comfortable extra-large double bed, private bathroom, minibar, TV, and working desk.",
@@ -384,7 +451,7 @@ export const FACILITIES = [
 export const FAQS: FaqItem[] = [
   {
     question: "What room categories are available at Green Villa Unawatuna?",
-    answer: "Green Villa features 3 distinct room options: 1 exclusive Penthouse Suite (111 m² with private jacuzzi terrace), 6 Deluxe Double Rooms with Balcony (28 m²), and 3 Deluxe Double Rooms (28 m²)."
+    answer: "Green Villa features 4 distinct room & residence options: 1 spacious Three-Bedroom Apartment (120 m² with private kitchen & 3 bathrooms), 1 exclusive Penthouse Suite (111 m² with private jacuzzi terrace), 6 Deluxe Double Rooms with Balcony (28 m²), and 3 Deluxe Double Rooms (28 m²)."
   },
   {
     question: "How far is Green Villa from Unawatuna Beach?",

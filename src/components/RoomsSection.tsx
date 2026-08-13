@@ -27,7 +27,7 @@ export const RoomsSection: React.FC = () => {
         </div>
 
         {/* Room Cards Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {ROOMS.map((room) => (
             <RoomCard 
               key={room.id} 
@@ -76,10 +76,11 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
   const { formatAmount } = useCurrency();
 
   const isPenthouse = room.id === 'penthouse-suite';
+  const isApartment = room.id === 'three-bedroom-apartment';
 
   return (
     <div className={`bg-white rounded-3xl overflow-hidden shadow-lg border transition-all duration-300 hover:shadow-2xl flex flex-col justify-between ${
-      isPenthouse ? 'border-amber-300 ring-2 ring-amber-400/30' : 'border-slate-200'
+      isPenthouse || isApartment ? 'border-amber-300 ring-2 ring-amber-400/25' : 'border-slate-200'
     }`}>
       
       <div>
@@ -93,6 +94,11 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
 
           {/* Badge overlays */}
           <div className="absolute top-4 left-4 flex flex-col gap-2">
+            {isApartment && (
+              <span className="bg-emerald-800 text-amber-300 text-xs font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider flex items-center gap-1 border border-emerald-600/50">
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" /> 120 m² 3-Bedroom Villa Apartment
+              </span>
+            )}
             {isPenthouse && (
               <span className="bg-amber-400 text-slate-950 text-xs font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider flex items-center gap-1">
                 <Sparkles className="w-3.5 h-3.5" /> Flagship Jacuzzi Penthouse
@@ -163,7 +169,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
             </div>
             <div className="flex items-center gap-1.5">
               <BedDouble className="w-3.5 h-3.5 text-emerald-700" />
-              <span>1 Double Bed</span>
+              <span>{room.bed}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Eye className="w-3.5 h-3.5 text-emerald-700" />

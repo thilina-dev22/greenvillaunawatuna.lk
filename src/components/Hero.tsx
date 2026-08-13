@@ -311,7 +311,7 @@ export const Hero: React.FC = () => {
                   <div>
                     <p className="text-[11px] text-emerald-700 font-semibold uppercase tracking-wide">Starting from</p>
                     <p className="text-lg font-serif font-bold text-emerald-900">
-                      {formatAmount(55)} <span className="text-sm font-normal text-emerald-600">/ night</span>
+                      {formatAmount(44)} <span className="text-sm font-normal text-emerald-600">/ night</span>
                     </p>
                   </div>
                   <span className="text-[11px] font-bold bg-emerald-200/60 text-emerald-900 px-2.5 py-1 rounded-lg">No Fees</span>

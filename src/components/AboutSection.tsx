@@ -73,7 +73,7 @@ export const AboutSection: React.FC = () => {
                 <strong className="text-slate-800">Green Villa Unawatuna</strong> offers clean, comfortable, and tastefully appointed accommodation surrounded by a serene tropical garden.
               </p>
               <p>
-                Whether you're relaxing on your private balcony, unwinding in our luxury 111 m² Penthouse Suite with a private terrace jacuzzi, or strolling to nearby beachside cafés — Green Villa blends central convenience with quiet tranquility.
+                Whether you're relaxing on your private balcony, enjoying our spacious 120 m² Three-Bedroom Apartment with a private kitchen, unwinding in our luxury 111 m² Penthouse Suite with a private terrace jacuzzi, or strolling to nearby beachside cafés — Green Villa blends central convenience with quiet tranquility.
               </p>
             </div>
 
