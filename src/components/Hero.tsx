@@ -84,14 +84,18 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center bg-slate-950 overflow-hidden">
+    <section className="relative bg-slate-950 overflow-hidden">
 
-      {/* ── Slideshow Background ── */}
-      <div className="absolute inset-0 z-0">
+      {/* ── Slideshow Background — pinned to viewport height ── */}
+      <div
+        className="sticky top-0 left-0 w-full z-0 pointer-events-none"
+        style={{ height: '100svh', marginBottom: '-100svh' }}
+        aria-hidden="true"
+      >
         {HERO_SLIDES.map((slide, i) => (
           <div
             key={slide.src}
-            className={`absolute inset-0 transition-opacity duration-900 ease-in-out ${
+            className={`absolute inset-0 transition-opacity ease-in-out ${
               i === current ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDuration: '900ms' }}
@@ -99,16 +103,19 @@ export const Hero: React.FC = () => {
             <img
               src={slide.src}
               alt={slide.label}
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-top"
               loading={i === 0 ? 'eager' : 'lazy'}
             />
           </div>
         ))}
 
         {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-900/25 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/65 to-slate-900/20 z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/55 via-slate-950/25 to-transparent z-10" />
       </div>
+
+      {/* Wrapper that sits on top of the sticky background */}
+      <div className="relative z-10 min-h-screen flex items-center">
 
       {/* ── Slide Nav Arrows ── */}
       <button
@@ -334,6 +341,7 @@ export const Hero: React.FC = () => {
 
         </div>
       </div>
+      </div>{/* end inner wrapper */}
 
       {/* Scroll indicator */}
       <button

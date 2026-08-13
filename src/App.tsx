@@ -8,7 +8,6 @@ import { LocationSection } from './components/LocationSection';
 import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { StickyMobileBar } from './components/StickyMobileBar';
 
 export function App() {
   return (
@@ -25,7 +24,6 @@ export function App() {
         <ContactSection />
       </main>
       <Footer />
-      <StickyMobileBar />
     </div>
   );
 }
