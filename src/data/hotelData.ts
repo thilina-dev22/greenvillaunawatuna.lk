@@ -71,6 +71,24 @@ export const HOTEL_INFO = {
   checkOut: "08:00 - 14:00",
 };
 
+export const getDirectBookingUrl = (options?: {
+  checkIn?: string;
+  checkOut?: string;
+  guests?: string | number;
+  room?: string;
+}) => {
+  const baseUrl = HOTEL_INFO.directBookingUrl;
+  const params = new URLSearchParams();
+
+  if (options?.checkIn) params.append("check_in", options.checkIn);
+  if (options?.checkOut) params.append("check_out", options.checkOut);
+  if (options?.guests) params.append("guests", String(options.guests));
+  if (options?.room) params.append("room", options.room);
+
+  const queryString = params.toString();
+  return queryString ? `${baseUrl}?${queryString}#rooms` : `${baseUrl}#rooms`;
+};
+
 export const ROOMS: Room[] = [
   {
     id: "three-bedroom-apartment",

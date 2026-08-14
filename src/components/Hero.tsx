@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { HOTEL_INFO } from '../data/hotelData';
+import { HOTEL_INFO, getDirectBookingUrl } from '../data/hotelData';
 import { Calendar as CalendarIcon, Users, Star, MapPin, CheckCircle, ShieldCheck, ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 
@@ -60,7 +60,7 @@ export const Hero: React.FC = () => {
     setTimeout(() => {
       setIsAnimating(false);
     }, 900);
-  }, [current, isAnimating]);
+  }, [isAnimating]);
 
   const next = useCallback(() => {
     goTo((current + 1) % HERO_SLIDES.length);
@@ -79,7 +79,12 @@ export const Hero: React.FC = () => {
 
   const handleBookingSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    window.open(HOTEL_INFO.directBookingUrl, '_blank');
+    const targetUrl = getDirectBookingUrl({
+      checkIn: checkInDate,
+      checkOut: checkOutDate,
+      guests,
+    });
+    window.open(targetUrl, '_blank');
   };
 
   const scrollToAbout = () => {

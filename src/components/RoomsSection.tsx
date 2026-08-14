@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Room } from '../data/hotelData';
-import { ROOMS, HOTEL_INFO } from '../data/hotelData';
+import { ROOMS, HOTEL_INFO, getDirectBookingUrl } from '../data/hotelData';
 import { RoomModal } from './RoomModal';
 import { Maximize2, BedDouble, Users, Sparkles, ChevronRight, ChevronLeft, Calendar, Eye, Check } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
@@ -73,7 +73,7 @@ interface RoomCardProps {
 
 const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
-  const { formatAmount } = useCurrency();
+  const { formatAmount, getRoomUsdPrice, isRateSynced } = useCurrency();
 
   const isPenthouse = room.id === 'penthouse-suite';
   const isApartment = room.id === 'three-bedroom-apartment';
@@ -199,16 +199,24 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
             <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold block">Price Per Night</span>
             <div className="flex items-baseline gap-1.5">
               <span className="text-2xl font-serif font-bold text-slate-900">
-                {formatAmount(room.priceUSD)}
+                {formatAmount(getRoomUsdPrice(room.id, room.priceUSD))}
               </span>
               <span className="text-xs text-slate-500 font-medium">
                 / night
               </span>
             </div>
           </div>
-          <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded">
-            Free Cancellation
-          </span>
+          <div className="text-right space-y-1">
+            <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded block">
+              Free Cancellation
+            </span>
+            {isRateSynced && (
+              <span className="text-[10px] font-semibold text-amber-800 bg-amber-100/80 px-1.5 py-0.5 rounded inline-flex items-center gap-1">
+                <Sparkles className="w-2.5 h-2.5 text-amber-600" />
+                Live IBE Sync
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Action Buttons */}
@@ -222,7 +230,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
           </button>
 
           <a
-            href={HOTEL_INFO.directBookingUrl}
+            href={getDirectBookingUrl({ room: room.id })}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full bg-[#0F382C] hover:bg-emerald-950 text-white font-bold py-2.5 px-3 rounded-xl shadow-md transition-colors text-xs flex items-center justify-center gap-1"

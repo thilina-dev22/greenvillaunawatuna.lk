@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Room } from '../data/hotelData';
-import { HOTEL_INFO } from '../data/hotelData';
+import { getDirectBookingUrl } from '../data/hotelData';
 import { X, Check, Calendar, ChevronLeft, ChevronRight, Maximize2, Sparkles, BedDouble, Users, Eye } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 
@@ -11,7 +11,7 @@ interface RoomModalProps {
 
 export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const { formatAmount } = useCurrency();
+  const { formatAmount, getRoomUsdPrice } = useCurrency();
 
   if (!room) return null;
 
@@ -191,7 +191,7 @@ export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
             <div className="text-xs text-slate-500">Starting price from</div>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-serif font-bold text-slate-900">
-                {formatAmount(room.priceUSD)}
+                {formatAmount(getRoomUsdPrice(room.id, room.priceUSD))}
               </span>
               <span className="text-sm text-slate-500 font-medium">
                 / night
@@ -200,7 +200,7 @@ export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
           </div>
 
           <a
-            href={HOTEL_INFO.directBookingUrl}
+            href={getDirectBookingUrl({ room: room.id })}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto bg-emerald-900 hover:bg-emerald-950 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-emerald-950/20 transition-all flex items-center justify-center gap-2 text-sm"

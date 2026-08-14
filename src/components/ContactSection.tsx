@@ -65,7 +65,7 @@ export const ContactSection: React.FC = () => {
         // Fallback simulated success if API key is pending setup so user gets clean feedback
         setStatus('success');
       }
-    } catch (err: any) {
+    } catch {
       // Even if network fails, present clear fallback toast and direct mailto link
       setStatus('success');
     }
@@ -163,7 +163,7 @@ export const ContactSection: React.FC = () => {
                 <span>Fast Response Guarantee</span>
               </div>
               <p className="text-slate-600 text-xs leading-relaxed">
-                Messages sent via contact us go directly to our official inbox at <strong>info@greenvillaunawatuna.lk</strong> . We typically respond within 1 to 2 hours.
+                Messages sent via contact us go directly to our official inbox at <strong>info@greenvillaunawatuna.lk</strong> .
               </p>
             </div>
 
