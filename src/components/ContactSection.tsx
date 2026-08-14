@@ -25,9 +25,9 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
     setStatus('submitting');
 
+    const accessKey = HOTEL_INFO.web3FormsAccessKey || (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string);
+
     try {
-      // Using Web3Forms endpoint configured for info@greenvillaunawatuna.lk
-      // Web3Forms access key can be configured below or passed dynamically
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -35,23 +35,23 @@ export const ContactSection: React.FC = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Web3Forms Access Key for info@greenvillaunawatuna.lk
-          subject: `New Website Inquiry from ${formData.name} - greenvillaunawatuna.lk`,
-          from_name: formData.name,
-          to_email: 'info@greenvillaunawatuna.lk',
+          access_key: accessKey,
+          subject: `New Inquiry from ${formData.name} (${formData.roomType}) - Green Villa`,
+          from_name: 'Green Villa Unawatuna Website',
+          replyto: formData.email,
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
+          phone: formData.phone || 'Not provided',
           room_type: formData.roomType,
-          dates: formData.dates,
+          dates: formData.dates || 'Not specified',
           message: formData.message,
-          domain: 'greenvillaunawatuna.lk'
+          botcheck: ''
         })
       });
 
       const json = await res.json();
 
-      if (json.success || res.ok) {
+      if (res.ok && json.success) {
         setStatus('success');
         setFormData({
           name: '',
@@ -62,12 +62,11 @@ export const ContactSection: React.FC = () => {
           message: ''
         });
       } else {
-        // Fallback simulated success if API key is pending setup so user gets clean feedback
-        setStatus('success');
+        console.warn('Web3Forms response:', json);
+        setStatus('error');
       }
     } catch {
-      // Even if network fails, present clear fallback toast and direct mailto link
-      setStatus('success');
+      setStatus('error');
     }
   };
 
@@ -195,6 +194,15 @@ export const ContactSection: React.FC = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Honeypot field for bot protection */}
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
+                {status === 'error' && (
+                  <div className="bg-rose-50 border border-rose-200 text-rose-800 p-4 rounded-xl text-xs space-y-2">
+                    <p className="font-semibold">Unable to submit form at this moment.</p>
+                    <p>Please send your inquiry directly to our Zoho Mail inbox: <a href="mailto:info@greenvillaunawatuna.lk" className="underline font-bold">info@greenvillaunawatuna.lk</a> or contact us via WhatsApp.</p>
+                  </div>
+                )}
                 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
@@ -253,6 +261,7 @@ export const ContactSection: React.FC = () => {
                       onChange={handleChange}
                       className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-600"
                     >
+                      <option value="Three-Bedroom Apartment">Three-Bedroom Apartment (120 m² with Kitchen)</option>
                       <option value="Penthouse Suite">Penthouse Suite (111 m² with Jacuzzi)</option>
                       <option value="Deluxe Double Room with Balcony">Deluxe Double Room with Balcony</option>
                       <option value="Deluxe Double Room">Deluxe Double Room</option>

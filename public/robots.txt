@@ -1,0 +1,6 @@
+# robots.txt for https://greenvillaunawatuna.lk
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://greenvillaunawatuna.lk/sitemap.xml

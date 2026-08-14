@@ -48,6 +48,7 @@ export const HOTEL_INFO = {
   phoneFormatted: "+94 77 619 7726",
   whatsapp: "94776197726",
   email: "info@greenvillaunawatuna.lk",
+  web3FormsAccessKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE",
   directBookingUrl: "https://www.hotelmate.net/hotels/green-villa-unawatuna-galle",
   googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.866744002241!2d80.24305489678956!3d6.013028300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae172f1ef33000b%3A0x23d0468ee0ea48e3!2sGreen%20Villa!5e0!3m2!1sen!2slk!4v1786620683690!5m2!1sen!2slk",
   heroImage: "/images/common/173381778.jpg",

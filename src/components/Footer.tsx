@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-3">
               <img
                 src="/images/logo.png"
-                alt="Green Villa Logo"
+                alt="Green Villa Unawatuna Official Logo"
                 className="h-12 w-auto object-contain drop-shadow brightness-110"
               />
               <div>

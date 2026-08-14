@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
           <a href="#" className="flex items-center gap-2.5 group shrink-0" aria-label="Green Villa Unawatuna">
             <img
               src="/images/logo.png"
-              alt="Green Villa Logo"
+              alt="Green Villa Unawatuna Official Logo"
               className="h-9 sm:h-11 w-auto object-contain drop-shadow-lg transition-all duration-300 group-hover:brightness-110"
             />
             <div className="flex flex-col">

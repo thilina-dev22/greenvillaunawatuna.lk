@@ -61,7 +61,8 @@ export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
             <div className="relative h-72 sm:h-96 md:h-[450px] bg-slate-900 rounded-2xl overflow-hidden group">
               <img
                 src={room.images[activeImageIndex]}
-                alt={`${room.name} photo ${activeImageIndex + 1}`}
+                alt={`${room.name} interior & amenities at Green Villa Unawatuna - photo ${activeImageIndex + 1}`}
+                decoding="async"
                 className="w-full h-full object-cover transition-opacity duration-300"
               />
 
@@ -70,13 +71,15 @@ export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
                 <>
                   <button
                     onClick={prevImage}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/60 hover:bg-slate-950/90 text-white flex items-center justify-center backdrop-blur-sm transition-all"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/60 hover:bg-slate-950 text-white flex items-center justify-center backdrop-blur-sm transition-all"
+                    aria-label="Previous image"
                   >
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
                     onClick={nextImage}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/60 hover:bg-slate-950/90 text-white flex items-center justify-center backdrop-blur-sm transition-all"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/60 hover:bg-slate-950 text-white flex items-center justify-center backdrop-blur-sm transition-all"
+                    aria-label="Next image"
                   >
                     <ChevronRight className="w-6 h-6" />
                   </button>
@@ -99,7 +102,7 @@ export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
                     activeImageIndex === idx ? 'border-emerald-600 scale-95 shadow-md' : 'border-transparent opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <img src={img} alt={`${room.name} thumbnail ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>

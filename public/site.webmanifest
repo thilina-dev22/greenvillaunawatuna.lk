@@ -1,0 +1,17 @@
+{
+  "name": "Green Villa Unawatuna",
+  "short_name": "Green Villa",
+  "description": "Tranquil Tropical Sanctuary Just 300m From Unawatuna Beach, Sri Lanka",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBFBFA",
+  "theme_color": "#0F382C",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

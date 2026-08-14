@@ -15,7 +15,9 @@ export const AboutSection: React.FC = () => {
                 <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                   <img
                     src="/images/common/173381778.jpg"
-                    alt="Green Villa outdoor courtyard"
+                    alt="Green Villa Unawatuna tropical garden entrance and outdoor courtyard"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
@@ -36,14 +38,18 @@ export const AboutSection: React.FC = () => {
                 <div className="rounded-2xl overflow-hidden shadow-lg aspect-[3/4]">
                   <img
                     src="/images/common/173381755.jpg"
-                    alt="Green Villa tropical garden and hammock"
+                    alt="Green Villa Unawatuna exterior building with tropical garden hammock"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                   <img
                     src="/images/common/173381812.jpg"
-                    alt="Green Villa garden view"
+                    alt="Green Villa Unawatuna serene tropical greenery and outdoor terrace"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>

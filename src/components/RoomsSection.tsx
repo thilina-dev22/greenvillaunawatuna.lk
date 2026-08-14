@@ -88,7 +88,9 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onSelectRoom }) => {
         <div className="relative h-64 sm:h-72 overflow-hidden bg-slate-900 group">
           <img 
             src={room.images[currentImgIndex]} 
-            alt={room.name} 
+            alt={`${room.name} - Green Villa Unawatuna, Sri Lanka`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
 

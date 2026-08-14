@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://greenvillaunawatuna.lk/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://greenvillaunawatuna.lk/images/common/173381778.jpg</image:loc>
+      <image:title>Green Villa Unawatuna Tropical Garden &amp; Courtyard</image:title>
+      <image:caption>Tropical villa hideaway located 300 meters from Unawatuna Beach, Galle, Sri Lanka</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://greenvillaunawatuna.lk/images/common/173381755.jpg</image:loc>
+      <image:title>Green Villa Unawatuna Exterior and Hammock Garden</image:title>
+      <image:caption>Peaceful exterior view of Green Villa guest house in Unawatuna</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://greenvillaunawatuna.lk/images/common/173381812.jpg</image:loc>
+      <image:title>Green Villa Unawatuna Terrace Garden View</image:title>
+      <image:caption>Lush tropical garden balcony view at Green Villa Unawatuna</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://greenvillaunawatuna.lk/#rooms</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://greenvillaunawatuna.lk/#about</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://greenvillaunawatuna.lk/#facilities</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://greenvillaunawatuna.lk/#reviews</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://greenvillaunawatuna.lk/#location</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://greenvillaunawatuna.lk/#faq</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://greenvillaunawatuna.lk/#contact</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
