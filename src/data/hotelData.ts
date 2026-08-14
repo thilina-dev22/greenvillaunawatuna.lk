@@ -68,8 +68,8 @@ export const HOTEL_INFO = {
     ]
   },
   
-  checkIn: "15:00 - 20:00",
-  checkOut: "08:00 - 14:00",
+  checkIn: "14:00 - 20:00",
+  checkOut: "08:00 - 11:00",
 };
 
 export const getDirectBookingUrl = (options?: {
@@ -482,7 +482,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "What are the check-in and check-out times?",
-    answer: "Standard check-in is between 15:00 and 20:00. Check-out is from 08:00 until 14:00. If you require special arrival times, please let us know in advance!"
+    answer: "Standard check-in is between 14:00 and 20:00. Check-out is from 08:00 until 11:00. If you require special arrival times, please let us know in advance!"
   },
   {
     question: "Is breakfast available at the property?",

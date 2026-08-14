@@ -8,7 +8,7 @@ const POLICY_CARDS = [
     bg: 'bg-emerald-50',
     iconColor: 'text-emerald-700',
     title: 'Check-In / Out',
-    lines: ['Check-in: 15:00 – 20:00', 'Check-out: 08:00 – 14:00'],
+    lines: ['Check-in: 14:00 – 20:00', 'Check-out: 08:00 – 11:00'],
   },
   {
     icon: Users,
