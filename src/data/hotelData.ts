@@ -68,7 +68,7 @@ export const HOTEL_INFO = {
   },
   
   checkIn: "15:00 - 20:00",
-  checkOut: "08:00 - 11:00",
+  checkOut: "08:00 - 14:00",
 };
 
 export const ROOMS: Room[] = [
@@ -394,7 +394,7 @@ export const REVIEWS: Review[] = [
 ];
 
 export const ATTRACTIONS: Attraction[] = [
-  { name: "Unawatuna Beach", distance: "300 m (4 min walk)", type: "beach" },
+  { name: "Unawatuna Beach", distance: "300 m (3 min walk)", type: "beach" },
   { name: "Bonavista Beach", distance: "2.3 km", type: "beach" },
   { name: "Rumassala South Beach", distance: "2.4 km", type: "beach" },
   { name: "Dalawella Beach (Turtle Beach)", distance: "2.5 km", type: "beach" },
@@ -455,7 +455,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "How far is Green Villa from Unawatuna Beach?",
-    answer: "We are located just 300 meters from Unawatuna Beach — a quick 3 to 4-minute relaxed walk down Yaddehimulla Road."
+    answer: "We are located just 300 meters from Unawatuna Beach — a quick 3-minute relaxed walk down Yaddehimulla Road."
   },
   {
     question: "How can I book directly and get the best rates?",
@@ -463,7 +463,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "What are the check-in and check-out times?",
-    answer: "Standard check-in is between 15:00 and 20:00. Check-out is from 08:00 until 11:00. If you require special arrival times, please let us know in advance!"
+    answer: "Standard check-in is between 15:00 and 20:00. Check-out is from 08:00 until 14:00. If you require special arrival times, please let us know in advance!"
   },
   {
     question: "Is breakfast available at the property?",

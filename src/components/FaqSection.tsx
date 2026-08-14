@@ -8,14 +8,14 @@ const POLICY_CARDS = [
     bg: 'bg-emerald-50',
     iconColor: 'text-emerald-700',
     title: 'Check-In / Out',
-    lines: ['Check-in: 15:00 – 20:00', 'Check-out: 08:00 – 11:00'],
+    lines: ['Check-in: 15:00 – 20:00', 'Check-out: 08:00 – 14:00'],
   },
   {
     icon: Users,
     bg: 'bg-amber-50',
     iconColor: 'text-amber-700',
     title: 'Children & Beds',
-    lines: ['Children of any age welcome', 'Under 6: free stay', 'Cots unavailable'],
+    lines: ['Children of any age welcome', 'Under 8 yrs: free stay', 'Cots unavailable'],
   },
   {
     icon: CreditCard,

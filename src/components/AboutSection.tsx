@@ -14,7 +14,7 @@ export const AboutSection: React.FC = () => {
               <div className="space-y-4">
                 <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                   <img
-                    src="/images/common/173381775.jpg"
+                    src="/images/common/173381778.jpg"
                     alt="Green Villa outdoor courtyard"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
@@ -35,8 +35,15 @@ export const AboutSection: React.FC = () => {
               <div className="space-y-4 pt-8">
                 <div className="rounded-2xl overflow-hidden shadow-lg aspect-[3/4]">
                   <img
-                    src="/images/common/78888822.jpg"
-                    alt="Green Villa tropical garden"
+                    src="/images/common/173381755.jpg"
+                    alt="Green Villa tropical garden and hammock"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
+                  <img
+                    src="/images/common/173381812.jpg"
+                    alt="Green Villa garden view"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
@@ -69,7 +76,7 @@ export const AboutSection: React.FC = () => {
 
             <div className="space-y-4 text-slate-600 text-base leading-relaxed">
               <p>
-                Standing just 2 minutes from the scenic Unawatuna Beach,{' '}
+                Standing just 3 minutes from the scenic Unawatuna Beach,{' '}
                 <strong className="text-slate-800">Green Villa Unawatuna</strong> offers clean, comfortable, and tastefully appointed accommodation surrounded by a serene tropical garden.
               </p>
               <p>

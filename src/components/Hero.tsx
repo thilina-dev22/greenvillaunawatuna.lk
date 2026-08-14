@@ -205,7 +205,7 @@ export const Hero: React.FC = () => {
                 </span>
               </h1>
               <p className="text-slate-300/90 text-base sm:text-lg leading-relaxed max-w-xl font-light">
-                A serene hideaway nestled in lush gardens, just 2 minutes from famous
+                A serene hideaway nestled in lush gardens, just 3 minutes from famous
                 Unawatuna Beach — featuring an exclusive 111 m² Penthouse Suite with a
                 private jacuzzi.
               </p>
@@ -216,7 +216,7 @@ export const Hero: React.FC = () => {
               {[
                 { label: 'Best Rate Guaranteed' },
                 { label: 'Free WiFi & Parking' },
-                { label: '2 Min Walk to Beach' },
+                { label: '3 Min Walk to Beach' },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-slate-200 text-sm">
                   <CheckCircle className="w-4 h-4 text-amber-400 shrink-0" />
