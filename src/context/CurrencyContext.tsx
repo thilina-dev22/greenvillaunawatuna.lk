@@ -109,56 +109,6 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return syncedPrices[roomId] ?? defaultPriceUSD;
   };
 
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchLiveRates = async () => {
-      try {
-        const response = await fetch('https://open.er-api.com/v6/latest/USD');
-        if (!response.ok) throw new Error('Primary exchange rate API failed');
-        const data = await response.json();
-        
-        if (data && data.rates && isMounted) {
-          setRates((prev) => ({
-            ...prev,
-            USD: 1.0,
-            EUR: data.rates.EUR || prev.EUR,
-            GBP: data.rates.GBP || prev.GBP,
-            JPY: data.rates.JPY || prev.JPY,
-            LKR: data.rates.LKR || prev.LKR,
-          }));
-          setIsLiveRates(true);
-        }
-      } catch (err) {
-        console.warn('Primary rate API error, trying fallback...', err);
-        try {
-          const fallbackRes = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-          if (!fallbackRes.ok) throw new Error('Fallback API failed');
-          const fallbackData = await fallbackRes.json();
-          if (fallbackData && fallbackData.rates && isMounted) {
-            setRates((prev) => ({
-              ...prev,
-              USD: 1.0,
-              EUR: fallbackData.rates.EUR || prev.EUR,
-              GBP: fallbackData.rates.GBP || prev.GBP,
-              JPY: fallbackData.rates.JPY || prev.JPY,
-              LKR: fallbackData.rates.LKR || prev.LKR,
-            }));
-            setIsLiveRates(true);
-          }
-        } catch (fallbackErr) {
-          console.warn('Fallback rate API error, using built-in rates:', fallbackErr);
-        }
-      }
-    };
-
-    fetchLiveRates();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
   const formatAmount = (usdAmount: number): string => {
     const rate = rates[currency.code] || 1.0;
     const converted = Math.round(usdAmount * rate);
