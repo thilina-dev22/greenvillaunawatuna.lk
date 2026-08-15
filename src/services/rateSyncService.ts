@@ -5,7 +5,7 @@
 
 const HOTELMATE_PAGE_URL = 'https://www.hotelmate.net/hotels/green-villa-unawatuna-galle';
 const HOTELMATE_CHUNK_URL = 'https://www.hotelmate.net/_next/static/chunks/52759868b23becfb.js';
-const HOTELMATE_API_URL = 'https://liveapi365.hotelmate.app/api/hotelrateplans/hotel/27?isCmActive=true';
+const HOTELMATE_API_URL = 'https://liveapi365.hotelmate.app/api/hotelrateplans/hotel/27?isCmActive=false';
 const FALLBACK_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMjkwNGE1OTAtYmRhYS00ZjY1LTlmOWYtNTI0ZWU2MzBiNzJmIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiSWJlVXNlciIsImZ1bGxOYW1lIjoiVGhhbnVqYSBHYW1hZ2UiLCJlbWFpbCI6Im1nYW1hZ2V0aGFudWphMjFAZ21haWwuY29tIiwiaG90ZWxzIjoiW10iLCJuYmYiOjE3NjQ3NjkzMjMsImV4cCI6MjUzNDAyMjgxMDAwLCJpc3MiOiJIb3RlbE1hdGVJc3N1ZXIiLCJhdWQiOiJIb3RlbE1hdGVNYW5hZ2VyIn0.uUzauDPoScjhSdKZoCIW8xrODP9SJobgyi4SLnF4RGw';
 
 export interface SyncedPriceMap {
@@ -82,8 +82,8 @@ export function parseHotelMateRates(data: any[]): SyncedPriceMap {
   const priceMap: SyncedPriceMap = {};
   if (!Array.isArray(data)) return priceMap;
 
-  // Rank plans: IBE Room Only > FIT Room Only > IBE > Room Only > Others
-  const rankedItems: Array<{ roomId: string; defaultRate: number; score: number }> = [];
+  // Rank plans: IBE Room Only > IBE > FIT Room Only > Room Only > Others
+  const rankedItems: Array<{ roomId: string; defaultRate: number; score: number; id: number }> = [];
 
   for (const item of data) {
     const title = (item.title || '').toLowerCase();
@@ -105,20 +105,24 @@ export function parseHotelMateRates(data: any[]): SyncedPriceMap {
     if (!roomId) continue;
 
     let score = 0;
-    const isIBE = title.includes('ibe');
-    const isFIT = title.includes('fit');
+    const isIBE = title.startsWith('ibe') || title.includes('ibe');
     const isRoomOnly = title.includes('room only');
+    const isFIT = title.startsWith('fit') || title.includes('fit');
 
     if (isIBE && isRoomOnly) score = 100;
-    else if (isFIT && isRoomOnly) score = 90;
     else if (isIBE) score = 80;
-    else if (isRoomOnly) score = 70;
+    else if (isFIT && isRoomOnly) score = 70;
+    else if (isRoomOnly) score = 60;
     else score = 10;
 
-    rankedItems.push({ roomId, defaultRate, score });
+    rankedItems.push({ roomId, defaultRate, score, id: Number(item.hotelRatePlanID) || 0 });
   }
 
-  rankedItems.sort((a, b) => b.score - a.score);
+  // Sort descending by score. If tied, pick higher rate plan ID
+  rankedItems.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return b.id - a.id;
+  });
 
   for (const item of rankedItems) {
     if (!priceMap[item.roomId]) {
