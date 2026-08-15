@@ -2,7 +2,6 @@ import { useState } from 'react';
 import type { Room } from '../data/hotelData';
 import { getDirectBookingUrl } from '../data/hotelData';
 import { X, Check, Calendar, ChevronLeft, ChevronRight, Maximize2, Sparkles, BedDouble, Users, Eye } from 'lucide-react';
-import { useCurrency } from '../context/CurrencyContext';
 
 interface RoomModalProps {
   room: Room | null;
@@ -11,7 +10,6 @@ interface RoomModalProps {
 
 export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const { formatAmount, getRoomUsdPrice } = useCurrency();
 
   if (!room) return null;
 
@@ -191,14 +189,9 @@ export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
         {/* Modal Footer CTA */}
         <div className="bg-slate-50 border-t border-slate-200 p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <div className="text-xs text-slate-500">Starting price from</div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-serif font-bold text-slate-900">
-                {formatAmount(getRoomUsdPrice(room.id, room.priceUSD))}
-              </span>
-              <span className="text-sm text-slate-500 font-medium">
-                / night
-              </span>
+            <div className="text-xs text-emerald-700 font-semibold uppercase tracking-wide">Direct Booking Engine</div>
+            <div className="text-sm font-bold text-slate-800">
+              Live Rates & Instant Confirmation
             </div>
           </div>
 
@@ -206,10 +199,10 @@ export const RoomModal: React.FC<RoomModalProps> = ({ room, onClose }) => {
             href={getDirectBookingUrl({ room: room.id })}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto bg-emerald-900 hover:bg-emerald-950 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-emerald-950/20 transition-all flex items-center justify-center gap-2 text-sm"
+            className="w-full sm:w-auto bg-[#0F382C] hover:bg-emerald-950 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-emerald-950/20 transition-all flex items-center justify-center gap-2 text-sm"
           >
             <Calendar className="w-4 h-4 text-amber-300" />
-            <span>Book {room.name} Now</span>
+            <span>Check Prices & Availability</span>
           </a>
         </div>
 

@@ -6,8 +6,8 @@ export const StickyMobileBar: React.FC = () => {
   return (
     <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#091F15]/97 backdrop-blur-xl border-t border-white/10 px-4 py-3 shadow-2xl flex items-center justify-between gap-3 text-white">
       <div>
-        <span className="text-[10px] text-emerald-300/80 uppercase font-semibold tracking-wide block">Starting from</span>
-        <span className="text-sm font-bold text-white">$55<span className="text-xs font-normal text-slate-400">/night</span></span>
+        <span className="text-[10px] text-emerald-300/80 uppercase font-semibold tracking-wide block">Direct Booking</span>
+        <span className="text-xs font-bold text-amber-300">Best Rates Guaranteed</span>
       </div>
 
       <div className="flex items-center gap-2">
@@ -23,10 +23,10 @@ export const StickyMobileBar: React.FC = () => {
           href={HOTEL_INFO.directBookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-5 py-2.5 rounded-full shadow-lg text-xs flex items-center gap-1.5 shrink-0 transition-colors"
+          className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2.5 rounded-full shadow-lg text-xs flex items-center gap-1.5 shrink-0 transition-colors"
         >
           <Calendar className="w-3.5 h-3.5" />
-          <span>Book Direct</span>
+          <span>Check Availability</span>
         </a>
       </div>
     </div>

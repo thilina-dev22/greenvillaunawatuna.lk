@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { fetchLiveHotelMatePrices, type SyncedPriceMap } from '../services/rateSyncService';
+
+export interface SyncedPriceMap {
+  [roomId: string]: number;
+}
 
 export interface Currency {
   code: string;
@@ -41,8 +44,8 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [currency, setCurrency] = useState<Currency>(CURRENCIES[0]); // USD default
   const [rates, setRates] = useState<Record<string, number>>(INITIAL_RATES);
   const [isLiveRates, setIsLiveRates] = useState<boolean>(false);
-  const [syncedPrices, setSyncedPrices] = useState<SyncedPriceMap>({});
-  const [isRateSynced, setIsRateSynced] = useState<boolean>(false);
+  const syncedPrices: SyncedPriceMap = {};
+  const isRateSynced = false;
 
   useEffect(() => {
     let isMounted = true;
@@ -88,17 +91,7 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       }
     };
 
-    // 2. Fetch live HotelMate prices
-    const fetchHotelMateRates = async () => {
-      const prices = await fetchLiveHotelMatePrices();
-      if (isMounted && Object.keys(prices).length > 0) {
-        setSyncedPrices(prices);
-        setIsRateSynced(true);
-      }
-    };
-
     fetchLiveRates();
-    fetchHotelMateRates();
 
     return () => {
       isMounted = false;

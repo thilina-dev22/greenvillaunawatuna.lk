@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { HOTEL_INFO, getDirectBookingUrl } from '../data/hotelData';
 import { Calendar as CalendarIcon, Users, Star, MapPin, CheckCircle, ShieldCheck, ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useCurrency } from '../context/CurrencyContext';
 
 // Best photos: exterior, garden, penthouse terrace, rooms, courtyard — largest/highest quality
 const HERO_SLIDES = [
@@ -45,8 +44,6 @@ export const Hero: React.FC = () => {
   const [guests, setGuests] = useState<string>('2');
   const [isVisible, setIsVisible] = useState(false);
   const [paused, setPaused] = useState(false);
-
-  const { formatAmount } = useCurrency();
 
   useEffect(() => {
     const t = setTimeout(() => setIsVisible(true), 100);
@@ -311,12 +308,12 @@ export const Hero: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Rate callout */}
+                {/* Direct Booking callout */}
                 <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-3.5 flex items-center justify-between">
                   <div>
-                    <p className="text-[11px] text-emerald-700 font-semibold uppercase tracking-wide">Starting from</p>
-                    <p className="text-lg font-serif font-bold text-emerald-900">
-                      {formatAmount(44)} <span className="text-sm font-normal text-emerald-600">/ night</span>
+                    <p className="text-[11px] text-emerald-700 font-semibold uppercase tracking-wide">Direct Booking Engine</p>
+                    <p className="text-sm font-bold text-emerald-900">
+                      Best Rates Guaranteed & Instant Confirmation
                     </p>
                   </div>
                   <span className="text-[11px] font-bold bg-emerald-200/60 text-emerald-900 px-2.5 py-1 rounded-lg">No Fees</span>
@@ -327,7 +324,7 @@ export const Hero: React.FC = () => {
                     type="submit"
                     className="w-full bg-[#0F382C] hover:bg-emerald-950 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-emerald-950/20 transition-all flex items-center justify-center gap-2 group text-sm"
                   >
-                    <span>Search Live Rates</span>
+                    <span>Check Prices & Availability</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-amber-300" />
                   </button>
                 </form>

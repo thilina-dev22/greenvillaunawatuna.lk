@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { HOTEL_INFO } from '../data/hotelData';
 import { Calendar, Menu, X, Phone } from 'lucide-react';
-import { CurrencySelector } from './CurrencySelector';
 
 const NAV_LINKS = [
   { href: '#about', label: 'Overview' },
@@ -85,8 +84,6 @@ export const Header: React.FC = () => {
               <span>{HOTEL_INFO.phoneFormatted}</span>
             </a>
 
-            <CurrencySelector />
-
             <a
               href={HOTEL_INFO.directBookingUrl}
               target="_blank"
@@ -98,19 +95,16 @@ export const Header: React.FC = () => {
             </a>
           </div>
 
-          {/* Mobile Actions: Book button + Hamburger (Currency in drawer on small phones, top bar on sm+) */}
+          {/* Mobile Actions: Book button + Hamburger */}
           <div className="lg:hidden flex items-center gap-2">
-            <div className="hidden sm:block">
-              <CurrencySelector />
-            </div>
             <a
               href={HOTEL_INFO.directBookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-3 py-1.5 rounded-full text-xs shadow-md transition-colors shrink-0"
+              className="flex items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-3.5 py-1.5 rounded-full text-xs shadow-md transition-colors shrink-0"
             >
               <Calendar className="w-3.5 h-3.5" />
-              <span>Book</span>
+              <span>Book Direct</span>
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -131,12 +125,6 @@ export const Header: React.FC = () => {
         }`}
       >
         <div className="bg-[#091F15] border-t border-white/10 px-5 pt-4 pb-6 space-y-1">
-          
-          {/* Mobile Drawer Currency Selector */}
-          <div className="flex items-center justify-between py-2.5 px-3 bg-white/5 rounded-xl border border-white/10 mb-3">
-            <span className="text-xs font-semibold text-emerald-200">Currency</span>
-            <CurrencySelector variant="glass" />
-          </div>
 
           {NAV_LINKS.map((link) => (
             <a
