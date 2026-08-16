@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { HOTEL_INFO, getDirectBookingUrl } from '../data/hotelData';
-import { Calendar as CalendarIcon, Users, Star, MapPin, CheckCircle, ShieldCheck, ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { HOTEL_INFO } from '../data/hotelData';
+import { Calendar as CalendarIcon, Star, MapPin, CheckCircle, ShieldCheck, ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Sparkles, Zap, Lock, Award } from 'lucide-react';
 
 // Best photos: exterior, garden, penthouse terrace, rooms, courtyard — largest/highest quality
 const HERO_SLIDES = [
@@ -39,9 +39,6 @@ const SLIDE_INTERVAL = 5000; // ms
 export const Hero: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [checkInDate, setCheckInDate] = useState<string>('');
-  const [checkOutDate, setCheckOutDate] = useState<string>('');
-  const [guests, setGuests] = useState<string>('2');
   const [isVisible, setIsVisible] = useState(false);
   const [paused, setPaused] = useState(false);
 
@@ -73,16 +70,6 @@ export const Hero: React.FC = () => {
     const interval = setInterval(next, SLIDE_INTERVAL);
     return () => clearInterval(interval);
   }, [next, paused]);
-
-  const handleBookingSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const targetUrl = getDirectBookingUrl({
-      checkIn: checkInDate,
-      checkOut: checkOutDate,
-      guests,
-    });
-    window.open(targetUrl, '_blank');
-  };
 
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
@@ -247,89 +234,85 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: Booking widget */}
+          {/* Right: Direct Booking & Benefits Card */}
           <div
             className={`lg:col-span-5 transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
-            <div className="bg-white rounded-3xl shadow-2xl shadow-black/30 border border-white/20 overflow-hidden">
+            <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl shadow-black/30 border border-white/20 overflow-hidden">
 
               {/* Widget header */}
               <div className="bg-[#0F382C] px-6 py-5 flex items-center justify-between">
                 <div>
-                  <h3 className="font-serif font-bold text-lg text-white">Check Availability</h3>
-                  <p className="text-emerald-200/80 text-xs mt-0.5">Instant confirmation · Best rate direct</p>
+                  <div className="inline-flex items-center gap-1.5 text-amber-300 text-xs font-bold uppercase tracking-wider mb-0.5">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Official Direct Booking
+                  </div>
+                  <h3 className="font-serif font-bold text-xl text-white">Book Direct & Save</h3>
                 </div>
-                <div className="bg-amber-400/20 border border-amber-400/40 text-amber-300 text-[11px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  Best Price
+                <div className="bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                  <ShieldCheck className="w-4 h-4 text-amber-300" />
+                  Best Rate
                 </div>
               </div>
 
-              {/* Widget form */}
-              <div className="p-6 space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="min-w-0">
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Check-In</label>
-                    <input
-                      type="date"
-                      value={checkInDate}
-                      onChange={(e) => setCheckInDate(e.target.value)}
-                      className="w-full min-w-0 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all"
-                    />
+              {/* Widget content */}
+              <div className="p-6 sm:p-7 space-y-4">
+                
+                {/* Benefits List */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-emerald-50/70 border border-emerald-100/80 transition-colors">
+                    <div className="w-9 h-9 rounded-xl bg-emerald-800 text-amber-300 flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-900">Guaranteed Lowest Rates</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Get exclusive direct rates with no third-party booking commissions.
+                      </p>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Check-Out</label>
-                    <input
-                      type="date"
-                      value={checkOutDate}
-                      onChange={(e) => setCheckOutDate(e.target.value)}
-                      className="w-full min-w-0 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all"
-                    />
+
+                  <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100 transition-colors">
+                    <div className="w-9 h-9 rounded-xl bg-emerald-800/10 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <Zap className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-900">Real-Time Room Availability</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Live calendar for all 10 boutique units & luxury Penthouse Suite.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100 transition-colors">
+                    <div className="w-9 h-9 rounded-xl bg-emerald-800/10 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <Lock className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-900">Instant Confirmation & 0% Fees</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Direct booking engine voucher with instant reservation confirmation.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Guests</label>
-                  <div className="relative">
-                    <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-700" />
-                    <select
-                      value={guests}
-                      onChange={(e) => setGuests(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-3 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all appearance-none"
-                    >
-                      <option value="1">1 Guest</option>
-                      <option value="2">2 Guests</option>
-                      <option value="3">3 Guests</option>
-                      <option value="4">4 Guests (2 Rooms)</option>
-                      <option value="6">6+ Guests (Multiple Rooms)</option>
-                    </select>
-                  </div>
-                </div>
+                {/* Direct Booking CTA */}
+                <a
+                  href={HOTEL_INFO.directBookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#0F382C] hover:bg-emerald-950 text-white font-bold py-4 px-6 rounded-2xl shadow-lg shadow-emerald-950/20 transition-all flex items-center justify-center gap-2.5 group text-sm sm:text-base mt-2"
+                >
+                  <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
+                  <span>Check Live Rates & Availability</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-amber-300 ml-0.5" />
+                </a>
 
-                {/* Direct Booking callout */}
-                <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-3.5 flex items-center justify-between">
-                  <div>
-                    <p className="text-[11px] text-emerald-700 font-semibold uppercase tracking-wide">Direct Booking Engine</p>
-                    <p className="text-sm font-bold text-emerald-900">
-                      Best Rates Guaranteed & Instant Confirmation
-                    </p>
-                  </div>
-                  <span className="text-[11px] font-bold bg-emerald-200/60 text-emerald-900 px-2.5 py-1 rounded-lg">No Fees</span>
-                </div>
-
-                <form onSubmit={handleBookingSearch}>
-                  <button
-                    type="submit"
-                    className="w-full bg-[#0F382C] hover:bg-emerald-950 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-emerald-950/20 transition-all flex items-center justify-center gap-2 group text-sm"
-                  >
-                    <span>Check Prices & Availability</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-amber-300" />
-                  </button>
-                </form>
-
-                <p className="text-center text-xs text-slate-400">
+                {/* Footer note */}
+                <p className="text-center text-xs text-slate-400 pt-1">
                   Powered by{' '}
                   <a
                     href={HOTEL_INFO.directBookingUrl}
